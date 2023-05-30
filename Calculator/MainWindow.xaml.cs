@@ -88,10 +88,12 @@ namespace Calculator
 
         private void OperationButton_Click(object sender, RoutedEventArgs e)
         {
-            if (double.TryParse(resultLabel.Content.ToString(), out lastNumber))
+            bool par = double.TryParse(resultLabel.Content.ToString(), out lastNumber);
+            if ( par)
             {
                 resultLabel.Content = "0";
             }
+            
 
             if (sender == multiplicationButton)
                 selectedOperator = SelectedOperator.Multiplication;
@@ -106,13 +108,13 @@ namespace Calculator
 
         private void pointButton_Click(object sender, RoutedEventArgs e)
         {
-            if(resultLabel.Content.ToString().Contains("."))
+            if(resultLabel.Content.ToString().Contains(","))
             {
                 //Do nothing
             }
             else
             {
-                resultLabel.Content = $"{resultLabel.Content}.";
+                resultLabel.Content = $"{resultLabel.Content},";
             }
         }
 
